@@ -6,7 +6,7 @@ import { ZeroState } from './components/ZeroState'
 
 function App() {
   return (
-    <main className="relative min-h-screen p-6">
+    <main className="mx-auto min-h-screen max-w-2xl p-6">
       <Header className="mb-10" />
       <AddTodo className="mb-10" />
       <ZeroState className="mb-10" />
