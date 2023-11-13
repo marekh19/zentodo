@@ -13,15 +13,23 @@ type Props = {
   className?: string
 }
 
+const sortTodosByDate = (todos: Todo[]) => {
+  return todos.slice().sort((a, b) => {
+    const dateA =
+      typeof a.createdAt === 'string' ? new Date(a.createdAt) : a.createdAt
+    const dateB =
+      typeof b.createdAt === 'string' ? new Date(b.createdAt) : b.createdAt
+    return dateB.getTime() - dateA.getTime()
+  })
+}
+
 const filterTodos = (todos: Todo[], type: TodoListType) => {
   const filteredTodos =
     type === 'todo'
       ? todos.filter(todo => !todo.done)
       : todos.filter(todo => todo.done)
 
-  return filteredTodos.sort(
-    (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
-  )
+  return sortTodosByDate(filteredTodos)
 }
 
 export const TodoList: FC<Props> = ({ type, className }) => {
