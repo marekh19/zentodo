@@ -2,7 +2,6 @@ import type { FC } from 'react'
 
 import { cn } from '@/lib/utils'
 import Logo from '@/assets/icons/zentodo.svg?react'
-import Logo from '@/assets/icons/zentodo.svg?react'
 
 type Props = {
   className?: string
