@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+      --text: #1E1E1E;
+      --background: #EFEFEF;
+    }
+  }
+  
+  @layer base {
+    body {
+      @apply bg-background text-text;
+    }
+  }
