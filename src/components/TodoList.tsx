@@ -1,7 +1,6 @@
 import type { FC } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 
-import { cn } from '@/lib/utils'
 import { useTodoStore, type Todo } from '@/stores/useTodoStore'
 
 import { TodoItem } from './TodoItem'
@@ -40,7 +39,7 @@ export const TodoList: FC<Props> = ({ type, className }) => {
   if (filteredTodos?.length === 0) return null
 
   return (
-    <div className={cn('mb-8', className)}>
+    <div className={className}>
       <h2 className="mb-4 text-3xl font-extralight text-neutral-600">
         {type === 'todo' ? 'To do' : 'Completed'}
       </h2>
