@@ -15,6 +15,6 @@ export const Header: FC<Props> = ({ className }) => (
     )}
   >
     <Logo className="h-12 w-12" />
-    <span className="text-4xl font-light tracking-wider">ZenToDo</span>
+    <h1 className="text-4xl font-light tracking-wider">ZenToDo</h1>
   </div>
 )
