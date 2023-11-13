@@ -1,7 +1,8 @@
 import type { FC } from 'react'
-import { useTodoStore, type Todo } from '@/stores/useTodoStore'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 import { cn } from '@/lib/utils'
+import { useTodoStore, type Todo } from '@/stores/useTodoStore'
 
 import { TodoItem } from './TodoItem'
 
@@ -26,6 +27,7 @@ const filterTodos = (todos: Todo[], type: TodoListType) => {
 export const TodoList: FC<Props> = ({ type, className }) => {
   const todos = useTodoStore(state => state.todos)
   const filteredTodos = filterTodos(todos, type)
+  const [parent, _enableAnimations] = useAutoAnimate()
 
   if (filteredTodos?.length === 0) return null
 
@@ -34,7 +36,7 @@ export const TodoList: FC<Props> = ({ type, className }) => {
       <h2 className="mb-4 text-3xl font-extralight text-neutral-600">
         {type === 'todo' ? 'To do' : 'Completed'}
       </h2>
-      <ul className="flex flex-col gap-y-2">
+      <ul className="flex flex-col gap-y-2" ref={parent}>
         {filteredTodos?.map(todo => <TodoItem key={todo.id} todo={todo} />)}
       </ul>
     </div>
