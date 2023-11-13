@@ -1,7 +1,7 @@
 import { useRef, type FC } from 'react'
-import { useTodoStore } from '@/stores/useTodoStore'
 
 import { cn } from '@/lib/utils'
+import { useTodoStore } from '@/stores/useTodoStore'
 
 type Props = {
   className?: string
@@ -10,9 +10,6 @@ type Props = {
 export const AddTodo: FC<Props> = ({ className }) => {
   const inputRef = useRef<HTMLInputElement | null>(null)
   const addTodo = useTodoStore(state => state.addTodo)
-  const todos = useTodoStore(state => state.todos)
-
-  console.log(todos)
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
