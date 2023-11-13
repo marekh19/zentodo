@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-      --text: #1E1E1E;
-      --background: #EFEFEF;
-    }
+  :root {
+    --text: #1e1e1e;
+    --background: #efefef;
   }
-  
-  @layer base {
-    body {
-      @apply bg-background text-text;
-    }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text;
   }
+}
