@@ -5,7 +5,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:tailwindcss/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -15,8 +14,6 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'tailwindcss/no-custom-classname': 'off',
-    'tailwindcss/classnames-order': 'off', // done via prettier plugin
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
       'warn',
