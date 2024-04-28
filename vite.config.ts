@@ -4,7 +4,6 @@ import { VitePWA } from 'vite-plugin-pwa'
 import svgr from 'vite-plugin-svgr'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -12,9 +11,9 @@ export default defineConfig({
     svgr(),
     VitePWA({
       manifest: {
-        name: 'ZenToDo',
-        short_name: 'ZenToDo',
-        description: 'Installable ToDo app with Zen mode.',
+        name: 'Zentodo',
+        short_name: 'Zentodo',
+        description: 'Installable todo app with zen mode.',
         start_url: '/',
         orientation: 'portrait',
         theme_color: '#EFEFEF',
