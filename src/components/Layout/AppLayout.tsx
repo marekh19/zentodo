@@ -11,7 +11,7 @@ type Props = {
 export const AppLayout: React.FC<Props> = ({ children }) => {
   return (
     <Providers>
-      <AppShell header={{ height: 64 }} withBorder={false}>
+      <AppShell header={{ height: 60 }} withBorder={false}>
         <AppShell.Header mx="auto" maw="64rem" py="xs" px="md">
           <Group h="100%" justify="space-between">
             <Group gap="xs" h="100%">
@@ -25,7 +25,7 @@ export const AppLayout: React.FC<Props> = ({ children }) => {
               >
                 <Logo style={{ height: '100%' }} />
               </Group>
-              <Title>Zentodo</Title>
+              <Title size="h3">Zentodo</Title>
             </Group>
             <ToggleTheme />
           </Group>
