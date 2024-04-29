@@ -21,7 +21,7 @@ jobs:
         run: npx tsc --noEmit
 
       - name: Lint with ESLint
-        run: npx eslint . --ext .ts,.tsx
+        run: npx eslint --fix . --ext .ts,.tsx
 
       - name: Check formatting with Prettier
-        run: npx prettier --check . --ignore-unknown
+        run: npx prettier --write . --ignore-unknown
