@@ -9,19 +9,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: '20' # Ensure this matches the Node version used in development
+          version: 9.3.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Validate TypeScript
-        run: npx tsc --noEmit
+        run: pnpm install
 
       - name: Lint with ESLint
-        run: npx eslint --fix . --ext .ts,.tsx
+        run: pnpm run lint:check
 
       - name: Check formatting with Prettier
-        run: npx prettier --write . --ignore-unknown
+        run: pnpm run format:check
+
+      - name: Build the project
+        run: pnpm run build

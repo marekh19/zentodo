@@ -8,8 +8,14 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"./src/**/*\"",
-    "lint": "eslint --fix \"./src/**/*.{js,ts,jsx,tsx}\""
+    "format:check": "prettier --check \"./src/**/*\"",
+    "format:write": "prettier --write \"./src/**/*\"",
+    "lint:check": "eslint \"./src/**/*.{js,ts,jsx,tsx}\"",
+    "lint:fix": "eslint --fix \"./src/**/*.{js,ts,jsx,tsx}\"",
+    "test": "echo \"Error: no test specified\"",
+    "docker:up": "docker compose up",
+    "docker:up-rebuild": "docker compose down; docker compose up --renew-anon-volumes --build --force-recreate",
+    "docker:down": "docker compose down"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
@@ -40,10 +46,12 @@
     "postcss-preset-mantine": "^1.15.0",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.1.0",
+    "tsc-files": "^1.1.4",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-pwa": "^0.16.7",
     "vite-plugin-svgr": "^4.1.0",
     "vite-tsconfig-paths": "^4.2.1"
-  }
+  },
+  "packageManager": "pnpm@9.3.0"
 }
