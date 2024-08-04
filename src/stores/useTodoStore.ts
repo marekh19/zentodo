@@ -1,5 +1,8 @@
+import { nanoid } from 'nanoid'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
+
+import { storage } from '@/lib/storage'
 
 export type Todo = {
   id: string
@@ -22,16 +25,16 @@ type TodoStore = {
 }
 
 export const useTodoStore = create<TodoStore>()(
-  persist(
+  persist<TodoStore>(
     (set) => ({
       todos: [],
 
-      addTodo: (text: Todo['title']) =>
+      addTodo: (text) =>
         set((state) => ({
           todos: [
             ...state.todos,
             {
-              id: crypto.randomUUID(),
+              id: nanoid(),
               title: text,
               description: null,
               isCompleted: false,
@@ -41,7 +44,7 @@ export const useTodoStore = create<TodoStore>()(
           ],
         })),
 
-      setIsCompleted: (id: string, isCompleted: boolean) =>
+      setIsCompleted: (id, isCompleted) =>
         set((state) => ({
           todos: state.todos.map((todo) =>
             todo.id === id
@@ -54,17 +57,14 @@ export const useTodoStore = create<TodoStore>()(
           ),
         })),
 
-      removeTodo: (id: string) =>
+      removeTodo: (id) =>
         set((state) => ({
           todos: state.todos.filter((todo) => todo.id !== id),
         })),
 
       clearTodos: () => set({ todos: [] }),
 
-      updateTodo: (
-        id: Todo['id'],
-        { isCompleted, title, description }: UpdateTodo
-      ) =>
+      updateTodo: (id, { isCompleted, title, description }) =>
         set((state) => ({
           todos: state.todos.map((todo) =>
             todo.id === id
@@ -86,8 +86,7 @@ export const useTodoStore = create<TodoStore>()(
     }),
     {
       name: 'todo-storage',
-      storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ todos: state.todos }),
+      storage: createJSONStorage(() => storage),
     }
   )
 )
