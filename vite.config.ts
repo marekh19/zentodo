@@ -11,14 +11,17 @@ export default defineConfig({
     svgr(),
     VitePWA({
       manifest: {
+        id: 'zentodo-marekh19',
         name: 'Zentodo',
         short_name: 'Zentodo',
         description: 'Installable todo app with zen mode.',
         start_url: '/',
         orientation: 'portrait',
-        theme_color: '#EFEFEF',
+        theme_color: '#242424',
         scope: '/',
         display: 'standalone',
+        categories: ['productivity'],
+        dir: 'ltr',
         icons: [
           {
             src: 'pwa/icon-512.png',
