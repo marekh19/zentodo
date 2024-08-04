@@ -28,25 +28,21 @@ export default defineConfig({
             src: 'pwa/icon-512.png',
             sizes: '512x512',
             type: 'image/png',
-            // purpose: 'maskable any',
           },
           {
             src: 'pwa/icon-384.png',
             sizes: '384x384',
             type: 'image/png',
-            // purpose: 'maskable any',
           },
           {
             src: 'pwa/icon-192.png',
             sizes: '192x192',
             type: 'image/png',
-            // purpose: 'maskable any',
           },
           {
             src: 'pwa/icon-96.png',
             sizes: '96x96',
             type: 'image/png',
-            // purpose: 'maskable any',
           },
         ],
         screenshots: [
