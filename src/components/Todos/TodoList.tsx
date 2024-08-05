@@ -2,7 +2,6 @@ import type { FC } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Card, Stack, Title } from '@mantine/core'
 
-import { useNotification } from '@/hooks/useNotification'
 import { useTodos, type TodoListType } from '@/hooks/useTodos'
 
 import { TodoItem } from './TodoItem'
@@ -14,7 +13,6 @@ type Props = {
 export const TodoList: FC<Props> = ({ type }) => {
   const { getFilteredTodos } = useTodos()
   const [parentEl] = useAutoAnimate()
-  useNotification()
 
   if (getFilteredTodos(type)?.length === 0) return null
 
