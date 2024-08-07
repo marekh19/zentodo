@@ -1,6 +1,9 @@
 import { Stack } from '@mantine/core'
 
-import { useNotifications } from '@/hooks/useNotifications.ts'
+import {
+  useForegroundMessages,
+  useNotificationsPermAndToken,
+} from '@/hooks/notifications'
 
 import { AppLayout } from '@/components/Layout/AppLayout'
 import { AddTodoDrawer } from '@/components/Todos/AddTodoDrawer.tsx'
@@ -9,7 +12,8 @@ import { TodoMenu } from '@/components/Todos/TodoMenu.tsx'
 import { ZeroState } from '@/components/Todos/ZeroState.tsx'
 
 function App() {
-  useNotifications()
+  useNotificationsPermAndToken()
+  useForegroundMessages()
 
   return (
     <AppLayout>
