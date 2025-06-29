@@ -12,12 +12,14 @@ export const ToggleTheme: React.FC = () => {
     getInitialValueInEffect: true,
   })
 
+  const toggleTheme = () => {
+    setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')
+  }
+
   return (
     <Group justify="center">
       <ActionIcon
-        onClick={() =>
-          setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')
-        }
+        onClick={toggleTheme}
         variant="subtle"
         size="sm"
         title="Toggle theme"
