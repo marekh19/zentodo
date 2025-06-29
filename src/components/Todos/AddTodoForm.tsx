@@ -3,6 +3,7 @@ import { useForm } from '@mantine/form'
 import { SendHorizonal } from 'lucide-react'
 
 import { type Todo } from '@/stores/useTodoStore'
+import { useGtmEvent } from '@/hooks/useGtmEvent'
 import { useTodos } from '@/hooks/useTodos'
 
 type FormValues = Pick<Todo, 'title'>
@@ -11,8 +12,11 @@ type Props = {
   closeDrawer: () => void
 }
 
+const MIN_TASK_TITLE_LENGTH = 2
+
 export const AddTodoForm: React.FC<Props> = ({ closeDrawer }) => {
   const { add } = useTodos()
+  const sendGtmEvent = useGtmEvent()
 
   const form = useForm<FormValues>({
     mode: 'uncontrolled',
@@ -22,12 +26,15 @@ export const AddTodoForm: React.FC<Props> = ({ closeDrawer }) => {
 
     validate: {
       title: (value) =>
-        value.trim().length < 2 ? 'Todo must have at least 2 letters' : null,
+        value.trim().length < MIN_TASK_TITLE_LENGTH
+          ? 'Todo must have at least 2 letters'
+          : null,
     },
   })
 
   const handleSubmit = (data: FormValues) => {
     add(data.title)
+    sendGtmEvent('task_added', { task_name: data.title })
     closeDrawer()
   }
 
